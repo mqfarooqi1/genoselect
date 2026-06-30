@@ -1,0 +1,1906 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="scikit-learn-compatible genomic prediction and selection">
+      
+      
+      
+        <link rel="canonical" href="https://mqfarooqi1.github.io/genoselect/api/">
+      
+      
+        <link rel="prev" href="../guide/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>API reference - genoselect</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="genoselect" class="md-header__button md-logo" aria-label="genoselect" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            genoselect
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mqfarooqi1/genoselect" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mqfarooqi1/genoselect
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="genoselect" class="md-nav__button md-logo" aria-label="genoselect" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    genoselect
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mqfarooqi1/genoselect" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mqfarooqi1/genoselect
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    genoselect — tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prediction-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prediction models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.GBLUP" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.StackedEnsemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StackedEnsemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.available_models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        available_models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.make_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        make_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gblup-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP internals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.gblup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gblup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gblup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.GBLUP" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.reml_solve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reml_solve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.gblup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gblup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.reml_solve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reml_solve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.vanraden_grm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vanraden_grm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.centre_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        centre_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.cross_validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cross_validate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        benchmark
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="benchmark">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.benchmark.benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        benchmark
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.CVResult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CVResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_vcf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_vcf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_plink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_plink
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_hapmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_hapmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.GenotypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GenotypeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-and-qc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation and QC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.simulate_population" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        simulate_population
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.qc_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qc_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.impute_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        impute_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prediction-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prediction models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.GBLUP" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.StackedEnsemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StackedEnsemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.available_models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        available_models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.make_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        make_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gblup-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP internals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.gblup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gblup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gblup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.GBLUP" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBLUP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.reml_solve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reml_solve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gblup.gblup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gblup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.reml_solve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reml_solve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.vanraden_grm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vanraden_grm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.centre_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        centre_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.cross_validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cross_validate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        benchmark
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="benchmark">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.benchmark.benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        benchmark
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.CVResult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CVResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_vcf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_vcf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_plink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_plink
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.read_hapmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_hapmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.GenotypeData" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GenotypeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-and-qc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation and QC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.simulate_population" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        simulate_population
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.qc_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qc_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.impute_markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        impute_markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference">API reference</h1>
+<h2 id="prediction-models">Prediction models</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="genoselect.GBLUP" class="doc doc-heading">
+            <code>genoselect.GBLUP</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code>, <code><span title="sklearn.base.RegressorMixin">RegressorMixin</span></code></p>
+
+
+
+        <p>Genomic BLUP regressor.</p>
+<p>Fits GBLUP on a 0/1/2 marker matrix, estimating variance components by REML.
+The equivalent ridge-regression marker effects are derived so the model can
+predict breeding values for unseen genotypes.</p>
+
+
+<details class="attributes-(set-after-``fit``)" open>
+  <summary>Attributes (set after <code>fit</code>)</summary>
+  <p>h2_ : float
+    Estimated genomic heritability Vu / (Vu + Ve).
+Vu_, Ve_, lambda_ : float
+    Genetic and residual variances and their ratio.
+gebv_ : ndarray
+    Genomic estimated breeding values for the training individuals.
+marker_effects_ : ndarray
+    RR-BLUP marker effects (for out-of-sample prediction).</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="genoselect.StackedEnsemble" class="doc doc-heading">
+            <code>genoselect.StackedEnsemble</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code>, <code><span title="sklearn.base.RegressorMixin">RegressorMixin</span></code></p>
+
+
+
+        <p>Super-learner that combines base models with non-negative weights.</p>
+<p>Out-of-fold predictions from an inner cross-validation are stacked, and the
+combination weights are found by non-negative least squares (then
+normalised to sum to one), following the super-learner of van der Laan et
+al. (2007). Base models are then refit on the full training data.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.available_models" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">available_models</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Names of the genomic-prediction models genoselect can run.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.make_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">make_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Construct a fresh, unfitted estimator by name.</p>
+<p>All estimators follow the scikit-learn <code>fit(X, y)</code> / <code>predict(X)</code> API,
+where <code>X</code> is a 0/1/2 marker matrix.</p>
+
+
+    </div>
+
+</div><h2 id="gblup-internals">GBLUP internals</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="genoselect.gblup" class="doc doc-heading">
+            <code>genoselect.gblup</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>GBLUP by REML (Endelman 2011 spectral method), scikit-learn compatible.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="genoselect.gblup.GBLUP" class="doc doc-heading">
+            <code>GBLUP</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="sklearn.base.BaseEstimator">BaseEstimator</span></code>, <code><span title="sklearn.base.RegressorMixin">RegressorMixin</span></code></p>
+
+
+
+        <p>Genomic BLUP regressor.</p>
+<p>Fits GBLUP on a 0/1/2 marker matrix, estimating variance components by REML.
+The equivalent ridge-regression marker effects are derived so the model can
+predict breeding values for unseen genotypes.</p>
+
+
+<details class="attributes-(set-after-``fit``)" open>
+  <summary>Attributes (set after <code>fit</code>)</summary>
+  <p>h2_ : float
+    Estimated genomic heritability Vu / (Vu + Ve).
+Vu_, Ve_, lambda_ : float
+    Genetic and residual variances and their ratio.
+gebv_ : ndarray
+    Genomic estimated breeding values for the training individuals.
+marker_effects_ : ndarray
+    RR-BLUP marker effects (for out-of-sample prediction).</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.gblup.reml_solve" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">reml_solve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Solve the mixed model y = Xb + g + e, g ~ N(0, K s2u), e ~ N(0, I s2e).</p>
+<p>Variance components are estimated by REML using the spectral approach of
+Endelman (2011) — the profiled restricted log-likelihood is minimised over
+the single ratio lambda = s2e / s2u. Returns a dict with Vu, Ve, h2, beta,
+gebv, lambda, Hinv and the residuals (y - Xb).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.gblup.gblup" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gblup</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">geno</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_maf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Functional interface mirroring the R <code>GSbench::gblup</code>.</p>
+<p>With <code>geno</code> it returns a fitted :class:<code>GBLUP</code> (which can predict new
+genotypes); with only <code>K</code> it returns the REML solution dict (no
+out-of-sample prediction).</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.reml_solve" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">reml_solve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Solve the mixed model y = Xb + g + e, g ~ N(0, K s2u), e ~ N(0, I s2e).</p>
+<p>Variance components are estimated by REML using the spectral approach of
+Endelman (2011) — the profiled restricted log-likelihood is minimised over
+the single ratio lambda = s2e / s2u. Returns a dict with Vu, Ve, h2, beta,
+gebv, lambda, Hinv and the residuals (y - Xb).</p>
+
+
+    </div>
+
+</div><h2 id="relationship-matrix">Relationship matrix</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.vanraden_grm" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">vanraden_grm</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">min_maf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>VanRaden (2008) genomic relationship matrix from 0/1/2 dosages.</p>
+<p>G = W Wᵀ / (2 Σ p(1-p)), with W = M - 2p the centred marker matrix.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.centre_markers" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">centre_markers</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">min_maf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Centre markers by 2p and return the VanRaden scaling.</p>
+<p>Returns <code>(W, p, c, keep)</code> where <code>W</code> is the centred marker matrix
+(n x m_kept), <code>p</code> the allele frequencies of the kept markers, <code>c</code> the
+VanRaden normaliser <code>2 * sum p(1-p)</code>, and <code>keep</code> the boolean column mask.</p>
+
+
+    </div>
+
+</div><h2 id="cross-validation">Cross-validation</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.cross_validate" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">cross_validate</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;kfold&#39;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Cross-validate genomic-prediction models.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>geno</code>
+            </td>
+            <td>
+                  <code>array (n x m)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Marker matrix coded 0/1/2.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>y</code>
+            </td>
+            <td>
+                  <code><span title="array">array</span>(<span title="n">n</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenotypes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>models</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="list">list</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model name(s); defaults to <code>["gblup"]</code>. See :func:<code>available_models</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>k</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of folds for <code>scheme="kfold"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scheme</code>
+            </td>
+            <td>
+                  <code>(&#39;kfold&#39;, &#39;leave_group_out&#39;)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>leave_group_out</code> requires <code>groups</code> (e.g. families/environments).</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#34;kfold&#34;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="genoselect.benchmark" class="doc doc-heading">
+            <code>genoselect.benchmark</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Benchmark several genomic-prediction models on the same data.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.benchmark.benchmark" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">benchmark</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">models</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">reps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;kfold&#39;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Cross-validate all (or selected) models and return a comparable summary.</p>
+<p>Defaults to every model except the (slow, nested) ensemble. Use
+<code>CVResult.summary()</code> for a tidy table sorted by predictive ability.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="genoselect.CVResult" class="doc doc-heading">
+            <code>genoselect.CVResult</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Per-fold predictive abilities for one or more models.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="reading-data">Reading data</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.read_vcf" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">read_vcf</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Read a (optionally gzipped) VCF into dosages = number of ALT alleles.</p>
+<p>Biallelic diploid sites are used; multiallelic sites are skipped.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.read_plink" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">read_plink</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Read a PLINK 1 binary fileset (<code>.bed</code>/<code>.bim</code>/<code>.fam</code>).</p>
+<p>Dosage is the number of copies of the <code>.bim</code> A1 allele (0/1/2, NaN
+missing). Only SNP-major <code>.bed</code> files are supported (the PLINK default).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.read_hapmap" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">read_hapmap</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Read a HapMap file into dosages = copies of the second listed allele.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="genoselect.GenotypeData" class="doc doc-heading">
+            <code>genoselect.GenotypeData</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Genotypes plus identifiers.</p>
+<p><code>geno</code> is <code>(n_samples, n_markers)</code> allele dosage (0/1/2, NaN = missing).</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="simulation-and-qc">Simulation and QC</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.simulate_population" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">simulate_population</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_qtl</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">h2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Simulate <code>n</code> individuals genotyped at <code>m</code> biallelic markers.</p>
+<p><code>n_qtl</code> markers are causal with Normal effects; the genetic values are
+scaled to unit variance and Normal noise is added to give the target
+narrow-sense heritability <code>h2</code>.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.qc_markers" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">qc_markers</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">maf</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">max_missing</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">impute</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Filter markers by minor-allele frequency and missingness.</p>
+<p>Returns <code>(filtered_geno, keep_mask)</code>. With <code>impute=True</code> remaining
+missing values are mean-imputed.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.impute_markers" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">impute_markers</span><span class="p">(</span><span class="n">geno</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Mean-impute missing genotypes (NaN) column-wise (by 2p).</p>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

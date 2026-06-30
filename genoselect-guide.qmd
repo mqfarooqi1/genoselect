@@ -1,0 +1,217 @@
+---
+title: "genoselect — User Guide"
+subtitle: "scikit-learn-compatible genomic prediction and selection"
+author: "Muhammad Farooqi"
+date: today
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    geometry: margin=1in
+    colorlinks: true
+---
+
+# Introduction
+
+`genoselect` is a Python package for **genomic prediction and selection** from
+SNP marker data. Genomic selection has historically been served by R packages
+(rrBLUP, BGLR, sommer); `genoselect` brings the same methods to Python through a
+clean, **scikit-learn-compatible** API, so genomic-prediction models compose
+naturally with `Pipeline`, `GridSearchCV`, and the rest of the ecosystem.
+
+It implements the VanRaden genomic relationship matrix, GBLUP by REML, a common
+interface to machine-learning predictors, a stacked super-learner ensemble, and
+breeding-relevant cross-validation, together with population simulation and
+quality-control utilities.
+
+# Installation
+
+```bash
+pip install genoselect
+```
+
+From source:
+
+```bash
+git clone https://github.com/mqfarooqi1/genoselect
+cd genoselect && pip install -e ".[test]"
+```
+
+Requirements: Python 3.10+, NumPy, SciPy, scikit-learn, pandas.
+
+# Data conventions
+
+- **Genotypes** are a 2-D array of shape `(n_individuals, n_markers)`, coded as
+  **allele dosage** `0`, `1`, or `2` (copies of the reference allele).
+- **Phenotypes** are a 1-D array of length `n_individuals`.
+- Rows are individuals; columns are markers. Missing genotypes are `NaN` and can
+  be imputed with `impute_markers`.
+
+# Quick start
+
+```python
+import genoselect as gs
+
+# 1. simulate a population with a heritable trait
+pop = gs.simulate_population(n=250, m=800, n_qtl=40, h2=0.5, seed=1)
+
+# 2. fit GBLUP
+fit = gs.GBLUP().fit(pop.geno, pop.pheno)
+print(fit.h2_)          # estimated genomic heritability
+print(fit.gebv_[:5])    # genomic estimated breeding values
+
+# 3. predict new genotypes
+pred = fit.predict(pop.geno[:10])
+
+# 4. benchmark several models by cross-validation
+cv = gs.benchmark(pop.geno, pop.pheno, k=5, random_state=1)
+print(cv.summary())
+```
+
+# Reading your data
+
+Load real genotype files into a 0/1/2 matrix with one call. All readers return a
+`GenotypeData` with `.geno` (n_samples × n_markers), `.samples`, and `.markers`,
+and are pure-Python (no extra dependencies).
+
+```python
+gd = gs.read_vcf("genotypes.vcf.gz")     # number of ALT alleles
+gd = gs.read_plink("dataset")            # reads dataset.bed/.bim/.fam
+gd = gs.read_hapmap("data.hmp.txt")      # HapMap text format
+
+fit = gs.GBLUP().fit(gd.geno, phenotypes)
+```
+
+- `read_vcf` — biallelic diploid sites; dosage = number of ALT alleles.
+- `read_plink` — PLINK 1 binary; dosage = copies of the `.bim` A1 allele.
+- `read_hapmap` — dosage = copies of the second listed allele.
+
+Missing genotypes are `NaN`; clean them with `qc_markers` / `impute_markers`.
+
+# Function reference
+
+## Simulation: `simulate_population`
+
+```python
+pop = gs.simulate_population(n=200, m=1000, n_qtl=50, h2=0.5, seed=None)
+```
+
+Simulates `n` individuals at `m` biallelic markers. `n_qtl` markers are causal
+with Normal effects; genetic values are scaled to unit variance and Normal noise
+is added for the target heritability `h2`. Returns a `Population` with fields
+`geno`, `pheno`, `bv` (true breeding values), `qtl`, `effects`, and `h2`.
+
+## Relationship matrix: `vanraden_grm`
+
+```python
+G = gs.vanraden_grm(geno, min_maf=0.0)
+```
+
+The VanRaden (2008) genomic relationship matrix
+$G = W W^\top / (2 \sum p(1-p))$, where $W = M - 2p$ is the centred marker
+matrix. Use `min_maf` to drop low-frequency markers.
+
+## GBLUP
+
+```python
+fit = gs.GBLUP(min_maf=0.0).fit(geno, y)
+fit.predict(geno_new)
+```
+
+Genomic BLUP, fitted by REML using the Endelman (2011) spectral method. Useful
+fitted attributes:
+
+| Attribute | Meaning |
+|---|---|
+| `h2_` | Estimated genomic heritability $V_u / (V_u + V_e)$ |
+| `Vu_`, `Ve_`, `lambda_` | Genetic / residual variance and their ratio |
+| `gebv_` | Genomic estimated breeding values (training set) |
+| `marker_effects_` | RR-BLUP marker effects (for new-genotype prediction) |
+| `beta_`, `intercept_` | Fixed-effect estimates |
+
+A functional interface mirroring the R package is also available:
+
+```python
+fit = gs.gblup(y, geno=geno)        # returns a fitted GBLUP
+sol = gs.gblup(y, K=G)              # returns the REML solution dict
+```
+
+## Model registry: `available_models`, `make_model`
+
+```python
+gs.available_models()
+# ['gblup', 'elastic_net', 'random_forest', 'gradient_boosting', 'ensemble']
+
+model = gs.make_model("elastic_net", random_state=0)
+model.fit(geno, y)
+model.predict(geno_new)
+```
+
+Every model follows the scikit-learn `fit`/`predict` API on a 0/1/2 marker
+matrix.
+
+## Cross-validation: `cross_validate`, `benchmark`
+
+```python
+cv = gs.cross_validate(geno, y,
+                       models=["gblup", "elastic_net", "random_forest"],
+                       k=5, reps=1, scheme="kfold", random_state=0)
+cv.summary()     # tidy DataFrame: model, mean, sd, n_folds
+```
+
+Accuracy is the **predictive ability** — the correlation between predicted and
+observed phenotypes on held-out folds. Use `scheme="leave_group_out"` with a
+`groups` array (e.g. families or environments) for forward-prediction scenarios.
+`benchmark(...)` is a convenience wrapper that runs all models.
+
+## Stacked ensemble: `StackedEnsemble`
+
+```python
+ens = gs.StackedEnsemble(base_models=None, inner_k=5, random_state=0)
+ens.fit(geno, y)
+ens.weights_      # non-negative weights, summing to 1
+ens.predict(geno_new)
+```
+
+A super-learner: out-of-fold predictions from an inner cross-validation are
+combined by non-negative least squares (van der Laan et al., 2007). Base models
+default to GBLUP, elastic net, random forest, and gradient boosting.
+
+## Quality control: `qc_markers`, `impute_markers`
+
+```python
+geno_qc, keep = gs.qc_markers(geno, maf=0.05, max_missing=0.1, impute=True)
+geno_full = gs.impute_markers(geno)   # mean-impute NaNs
+```
+
+# Integration with scikit-learn
+
+Because the estimators are standard scikit-learn regressors, they slot into the
+wider ecosystem:
+
+```python
+from sklearn.model_selection import cross_val_score
+scores = cross_val_score(gs.GBLUP(), pop.geno, pop.pheno, cv=5,
+                         scoring="r2")
+```
+
+# Methods and references
+
+- VanRaden, P. M. (2008). Efficient methods to compute genomic predictions.
+  *Journal of Dairy Science* 91, 4414–4423. doi:10.3168/jds.2007-0980
+- Endelman, J. B. (2011). Ridge regression and other kernels for genomic
+  selection with R package rrBLUP. *The Plant Genome* 4, 250–255.
+  doi:10.3835/plantgenome2011.08.0024
+- Meuwissen, T. H. E., Hayes, B. J. & Goddard, M. E. (2001). Prediction of total
+  genetic value using genome-wide dense marker maps. *Genetics* 157, 1819–1829.
+  doi:10.1093/genetics/157.4.1819
+- van der Laan, M. J., Polley, E. C. & Hubbard, A. E. (2007). Super learner.
+  *Statistical Applications in Genetics and Molecular Biology* 6(1).
+
+# Citation
+
+> Farooqi, M. (2026). *genoselect: scikit-learn-compatible genomic prediction
+> and selection.* https://github.com/mqfarooqi1/genoselect
+
+`genoselect` is released under the MIT License.
