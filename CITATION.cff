@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use genoselect, please cite it as below."
+title: "genoselect: scikit-learn-compatible genomic prediction and selection"
+abstract: >-
+  A Python toolkit for genomic prediction from SNP marker data: the VanRaden
+  genomic relationship matrix, GBLUP by REML, machine-learning predictors, a
+  stacked super-learner ensemble, and breeding-relevant cross-validation, all as
+  scikit-learn-compatible estimators.
+type: software
+authors:
+  - given-names: Muhammad
+    family-names: Farooqi
+    email: mqfarooqi@gmail.com
+    orcid: "https://orcid.org/0000-0003-4918-9791"
+version: 0.1.0
+date-released: 2026-07-01
+license: MIT
+repository-code: "https://github.com/mqfarooqi1/genoselect"
+keywords:
+  - genomics
+  - genomic-selection
+  - genomic-prediction
+  - GBLUP
+  - machine-learning
+  - python
