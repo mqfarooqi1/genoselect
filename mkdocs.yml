@@ -1,0 +1,52 @@
+site_name: genoselect
+site_description: scikit-learn-compatible genomic prediction and selection
+site_url: https://mqfarooqi1.github.io/genoselect/
+repo_url: https://github.com/mqfarooqi1/genoselect
+repo_name: mqfarooqi1/genoselect
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: numpy
+            show_root_heading: true
+            show_source: false
+            heading_level: 2
+            members_order: source
+
+nav:
+  - Home: index.md
+  - Tutorial: tutorial.ipynb
+  - User guide: guide.md
+  - API reference: api.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+validation:
+  nav:
+    omitted_files: ignore
+  not_found: warn

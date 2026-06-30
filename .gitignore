@@ -9,6 +9,10 @@ dist/
 .ruff_cache/
 .mypy_cache/
 
+# docs build
+site/
+.cache/
+
 # envs
 .venv/
 venv/
