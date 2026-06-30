@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "genoselect"
+version = "0.1.0"
+description = "scikit-learn-compatible genomic prediction and selection from SNP marker data"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Muhammad Farooqi", email = "mqfarooqi@gmail.com" }]
+keywords = ["genomics", "genomic-selection", "genomic-prediction", "GBLUP",
+            "GWAS", "quantitative-genetics", "machine-learning", "scikit-learn"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.9",
+    "scikit-learn>=1.1",
+    "pandas>=1.5",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.urls]
+Homepage = "https://github.com/mqfarooqi1/genoselect"
+Repository = "https://github.com/mqfarooqi1/genoselect"
+Issues = "https://github.com/mqfarooqi1/genoselect/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/genoselect"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
