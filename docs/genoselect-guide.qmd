@@ -69,6 +69,26 @@ cv = gs.benchmark(pop.geno, pop.pheno, k=5, random_state=1)
 print(cv.summary())
 ```
 
+# Reading your data
+
+Load real genotype files into a 0/1/2 matrix with one call. All readers return a
+`GenotypeData` with `.geno` (n_samples × n_markers), `.samples`, and `.markers`,
+and are pure-Python (no extra dependencies).
+
+```python
+gd = gs.read_vcf("genotypes.vcf.gz")     # number of ALT alleles
+gd = gs.read_plink("dataset")            # reads dataset.bed/.bim/.fam
+gd = gs.read_hapmap("data.hmp.txt")      # HapMap text format
+
+fit = gs.GBLUP().fit(gd.geno, phenotypes)
+```
+
+- `read_vcf` — biallelic diploid sites; dosage = number of ALT alleles.
+- `read_plink` — PLINK 1 binary; dosage = copies of the `.bim` A1 allele.
+- `read_hapmap` — dosage = copies of the second listed allele.
+
+Missing genotypes are `NaN`; clean them with `qc_markers` / `impute_markers`.
+
 # Function reference
 
 ## Simulation: `simulate_population`

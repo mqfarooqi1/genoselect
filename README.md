@@ -23,6 +23,8 @@ matrices, with a properly implemented **GBLUP by REML** at its core.
   estimators (`make_model`, `available_models`).
 - **Breeding-relevant cross-validation** — k-fold and leave-group-out, reporting
   predictive ability honestly (`cross_validate`, `benchmark`).
+- **Read your own data** — `read_vcf`, `read_plink`, `read_hapmap` load VCF /
+  PLINK / HapMap files into 0/1/2 matrices (pure-Python, no extra deps).
 - **Simulation and QC** — `simulate_population`, `qc_markers`, `impute_markers`.
 
 ## Install
@@ -57,6 +59,13 @@ pred = fit.predict(pop.geno[:10])
 # benchmark several models by cross-validation
 cv = gs.benchmark(pop.geno, pop.pheno, k=5, random_state=1)
 print(cv.summary())
+```
+
+Load your own data instead of simulating:
+
+```python
+gd = gs.read_vcf("genotypes.vcf.gz")     # or read_plink("data"), read_hapmap("data.hmp.txt")
+fit = gs.GBLUP().fit(gd.geno, phenotypes)
 ```
 
 Because the estimators follow the scikit-learn API, they compose with the wider
