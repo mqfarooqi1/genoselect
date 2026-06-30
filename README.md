@@ -2,8 +2,11 @@
 
 **scikit-learn-compatible genomic prediction and selection from SNP marker data.**
 
+[![PyPI](https://img.shields.io/pypi/v/genoselect)](https://pypi.org/project/genoselect/)
+[![Python](https://img.shields.io/pypi/pyversions/genoselect)](https://pypi.org/project/genoselect/)
+[![Downloads](https://img.shields.io/pypi/dm/genoselect)](https://pypi.org/project/genoselect/)
+[![tests](https://github.com/mqfarooqi1/genoselect/actions/workflows/tests.yml/badge.svg)](https://github.com/mqfarooqi1/genoselect/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 
 Genomic selection is dominated by R packages (rrBLUP, BGLR, sommer). `genoselect`
 brings a clean, Pythonic, `scikit-learn`-compatible toolkit to the same problem:
@@ -25,9 +28,14 @@ matrices, with a properly implemented **GBLUP by REML** at its core.
 ## Install
 
 ```bash
-pip install genoselect          # once published
-# or, from source:
-pip install -e .
+pip install genoselect
+```
+
+Or from source:
+
+```bash
+git clone https://github.com/mqfarooqi1/genoselect
+cd genoselect && pip install -e .
 ```
 
 ## Quick start
