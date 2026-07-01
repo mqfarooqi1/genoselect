@@ -610,6 +610,89 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GWAS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gwas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gwas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.manhattan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manhattan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.qq_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qq_plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.manhattan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manhattan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.qq_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qq_plot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reading-data" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -957,6 +1040,89 @@
     <span class="md-ellipsis">
       
         CVResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GWAS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gwas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gwas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gwas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.manhattan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manhattan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genoselect.gwas.qq_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qq_plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.manhattan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manhattan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genoselect.qq_plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qq_plot
       
     </span>
   </a>
@@ -1668,6 +1834,263 @@ VanRaden normaliser <code>2 * sum p(1-p)</code>, and <code>keep</code> the boole
 
 
   </div>
+
+    </div>
+
+</div><h2 id="gwas">GWAS</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="genoselect.gwas" class="doc doc-heading">
+            <code>genoselect.gwas</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Single-marker genome-wide association (GWAS) with structure correction.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.gwas.gwas" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gwas</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_pc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">covariates</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Single-marker additive association scan.</p>
+<p>Each marker is tested for association with <code>y</code> after regressing out an
+intercept, optional <code>covariates</code>, and (optionally) the first <code>n_pc</code>
+genotype principal components to correct for population structure.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>geno</code>
+            </td>
+            <td>
+                  <code><span title="array">array</span>(<span title="n">n</span>, <span title="m">m</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Marker matrix coded 0/1/2.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>y</code>
+            </td>
+            <td>
+                  <code><span title="array">array</span>(<span title="n">n</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Phenotype (missing values are dropped).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>marker_map</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span> or <span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Per-marker annotation; recognised columns <code>marker</code>, <code>chrom</code>, <code>pos</code>
+are carried through to the result (enabling position-aware Manhattan
+plots).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>n_pc</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of genotype PCs to include as covariates.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>covariates</code>
+            </td>
+            <td>
+                  <code><span title="array">array</span>(<span title="n">n</span>, <span title="k">k</span>)</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Extra fixed covariates.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>One row per marker with columns <code>index</code> [, <code>marker</code>, <code>chrom</code>,
+<code>pos</code>], <code>effect</code>, <code>se</code>, <code>t</code>, <code>p</code> and <code>log10p</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.gwas.manhattan" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">manhattan</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;#2c7fb8&#39;</span><span class="p">,</span> <span class="s1">&#39;#8fbcd4&#39;</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;GWAS Manhattan&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Manhattan plot from a :func:<code>gwas</code> result (position-aware if <code>chrom</code>).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="genoselect.gwas.qq_plot" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">qq_plot</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;QQ plot&#39;</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>QQ plot of observed vs expected -log10(p) from a :func:<code>gwas</code> result.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.manhattan" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">manhattan</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;#2c7fb8&#39;</span><span class="p">,</span> <span class="s1">&#39;#8fbcd4&#39;</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;GWAS Manhattan&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Manhattan plot from a :func:<code>gwas</code> result (position-aware if <code>chrom</code>).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="genoselect.qq_plot" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">genoselect</span><span class="o">.</span><span class="n">qq_plot</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;QQ plot&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>QQ plot of observed vs expected -log10(p) from a :func:<code>gwas</code> result.</p>
+
 
     </div>
 

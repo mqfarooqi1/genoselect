@@ -430,6 +430,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GWAS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scikit-learn-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -579,6 +590,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gwas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GWAS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#scikit-learn-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -700,6 +722,14 @@ array for forward-prediction scenarios. <code>benchmark(...)</code> runs all mod
 </code></pre></div>
 <p>A super-learner combining the base models with NNLS weights from an inner
 cross-validation.</p>
+<h2 id="gwas">GWAS</h2>
+<p>Single-marker association mapping with population-structure correction:</p>
+<div class="highlight"><pre><span></span><code><span class="n">res</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">gwas</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker_map</span><span class="o">=</span><span class="n">mmap</span><span class="p">,</span> <span class="n">n_pc</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># mmap has chrom/pos columns</span>
+<span class="n">gs</span><span class="o">.</span><span class="n">manhattan</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>      <span class="c1"># position-aware Manhattan plot</span>
+<span class="n">gs</span><span class="o">.</span><span class="n">qq_plot</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>        <span class="c1"># calibration check</span>
+</code></pre></div>
+<p><code>gwas</code> returns a DataFrame with per-marker effect, standard error, t, p and
+<code>log10p</code>. Plotting helpers require matplotlib (<code>pip install genoselect[plot]</code>).</p>
 <h2 id="scikit-learn-integration">scikit-learn integration</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
 <span class="n">cross_val_score</span><span class="p">(</span><span class="n">gs</span><span class="o">.</span><span class="n">GBLUP</span><span class="p">(),</span> <span class="n">geno</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">)</span>
