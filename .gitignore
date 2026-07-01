@@ -21,3 +21,6 @@ env/
 # OS
 Thumbs.db
 .DS_Store
+
+# accidental nested clone
+examples/genoselect/
