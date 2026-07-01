@@ -86,6 +86,19 @@ ens.predict(geno_new)
 A super-learner combining the base models with NNLS weights from an inner
 cross-validation.
 
+## GWAS
+
+Single-marker association mapping with population-structure correction:
+
+```python
+res = gs.gwas(geno, y, marker_map=mmap, n_pc=3)   # mmap has chrom/pos columns
+gs.manhattan(res)      # position-aware Manhattan plot
+gs.qq_plot(res)        # calibration check
+```
+
+`gwas` returns a DataFrame with per-marker effect, standard error, t, p and
+`log10p`. Plotting helpers require matplotlib (`pip install genoselect[plot]`).
+
 ## scikit-learn integration
 
 ```python

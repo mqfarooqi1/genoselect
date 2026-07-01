@@ -11,13 +11,14 @@ from .benchmark import benchmark
 from .crossval import CVResult, cross_validate
 from .ensemble import StackedEnsemble
 from .gblup import GBLUP, gblup, reml_solve
+from .gwas import gwas, manhattan, qq_plot
 from .io import GenotypeData, read_hapmap, read_plink, read_vcf
 from .models import available_models, make_model
 from .qc import impute_markers, qc_markers
 from .relationship import allele_frequencies, centre_markers, vanraden_grm
 from .simulate import Population, simulate_population
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = [
     "GBLUP", "gblup", "reml_solve",
@@ -28,5 +29,6 @@ __all__ = [
     "simulate_population", "Population",
     "qc_markers", "impute_markers",
     "read_vcf", "read_hapmap", "read_plink", "GenotypeData",
+    "gwas", "manhattan", "qq_plot",
     "__version__",
 ]

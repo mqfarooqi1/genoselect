@@ -23,6 +23,8 @@ matrices, with a properly implemented **GBLUP by REML** at its core.
   estimators (`make_model`, `available_models`).
 - **Breeding-relevant cross-validation** — k-fold and leave-group-out, reporting
   predictive ability honestly (`cross_validate`, `benchmark`).
+- **GWAS** — single-marker association (`gwas`) with PC structure correction,
+  plus position-aware `manhattan` and `qq_plot` helpers.
 - **Read your own data** — `read_vcf`, `read_plink`, `read_hapmap` load VCF /
   PLINK / HapMap files into 0/1/2 matrices (pure-Python, no extra deps).
 - **Simulation and QC** — `simulate_population`, `qc_markers`, `impute_markers`.

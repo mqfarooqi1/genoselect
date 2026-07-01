@@ -30,6 +30,14 @@
 
 ::: genoselect.CVResult
 
+## GWAS
+
+::: genoselect.gwas
+
+::: genoselect.manhattan
+
+::: genoselect.qq_plot
+
 ## Reading data
 
 ::: genoselect.read_vcf
