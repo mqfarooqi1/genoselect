@@ -16,6 +16,10 @@ version: 0.3.0
 date-released: 2026-07-01
 license: MIT
 repository-code: "https://github.com/mqfarooqi1/genoselect"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21221653"
+    description: "Concept DOI — resolves to the latest genoselect release on Zenodo"
 keywords:
   - genomics
   - genomic-selection

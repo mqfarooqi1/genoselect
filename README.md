@@ -7,6 +7,7 @@
 [![Downloads](https://img.shields.io/pypi/dm/genoselect)](https://pypi.org/project/genoselect/)
 [![tests](https://github.com/mqfarooqi1/genoselect/actions/workflows/tests.yml/badge.svg)](https://github.com/mqfarooqi1/genoselect/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21221653.svg)](https://doi.org/10.5281/zenodo.21221653)
 
 Genomic selection is dominated by R packages (rrBLUP, BGLR, sommer). `genoselect`
 brings a clean, Pythonic, `scikit-learn`-compatible toolkit to the same problem:
