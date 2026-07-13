@@ -18,7 +18,7 @@ from .qc import impute_markers, qc_markers
 from .relationship import allele_frequencies, centre_markers, vanraden_grm
 from .simulate import Population, simulate_population
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 __all__ = [
     "GBLUP", "gblup", "reml_solve",

@@ -4,13 +4,16 @@ build-backend = "hatchling.build"
 
 [project]
 name = "genoselect"
-version = "0.3.0"
+version = "0.3.1"
 description = "scikit-learn-compatible genomic prediction and selection from SNP marker data"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
-authors = [{ name = "Muhammad Farooqi", email = "mqfarooqi@gmail.com" }]
+authors = [
+    { name = "Muhammad Farooqi", email = "mqfarooqi@gmail.com" },
+    { name = "Muhammad Farooqi" },
+]
 keywords = ["genomics", "genomic-selection", "genomic-prediction", "GBLUP",
             "GWAS", "quantitative-genetics", "machine-learning", "scikit-learn"]
 classifiers = [
